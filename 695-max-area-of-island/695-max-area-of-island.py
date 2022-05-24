@@ -3,7 +3,7 @@ class Solution:
     def maxAreaOfIsland(self, grid: List[List[int]]) -> int:
         
         area = []
-        self.count = 0
+        count = 0
         row = len(grid)
         col = len(grid[0])
         
@@ -11,7 +11,8 @@ class Solution:
         def dfs(x,y):
             if grid[x][y]==1:
                 grid[x][y]=0
-                self.count += 1
+                nonlocal count 
+                count += 1
                 if y-1 >=0 : dfs(x,y-1)
                 if x-1 >=0 : dfs(x-1,y)
                 if y+1 < col : dfs(x,y+1)
@@ -22,8 +23,8 @@ class Solution:
                 
                 if grid[i][j]==1:
                     dfs(i,j)
-                    area.append(int(self.count))
-                    self.count=0
+                    area.append(count)
+                    count=0
 
           
     
